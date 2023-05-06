@@ -16,9 +16,8 @@ const Converter = () => {
     setCurrencyType: "",
     currencyType: "",
     setSelectedCurrencyType: "",
-    currencyType: "",
+    // currencyType: "",
   };
-
   useEffect(() => {
     axios
       .get("https://api.coindesk.com/v1/bpi/currentprice.json")
@@ -113,7 +112,7 @@ const Converter = () => {
   //       return state.euroToBTC;
   //     }
   //     case "GBP": {
-  //       dispatch({ type: "CONVERT_TO_BTC", setCurrencyType: e.target.value });
+  //       dispatch({ type: "CONVERT_TO_BTC", setCurrencyType: e.target.value payload: gbpRateFloat});
   //       return state.gbpToBTC;
   //     }
   //     case "USD": {
@@ -164,14 +163,14 @@ const Converter = () => {
         }
       />
 
-      <select
-        onChange={(e) =>
+      <select className='bg-sky-700 px-4 py-2 text-white hover:bg-sky-800 sm:px-8 sm:py-3'>
+        onChange=
+        {(e) =>
           dispatch({
             type: "CONVERT_TO_BTC",
             setCurrencyType: e.currentTarget.value,
           })
         }
-      >
         <option value='Select Currency'>Select Currency</option>
         <option>EUR</option>
         <option>GBP</option>

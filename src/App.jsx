@@ -5,7 +5,9 @@ import Converter from "./Components/Converter";
 const App = () => {
   return (
     <div>
-      <h1>Convert To Bitcoin Project</h1>
+      <h1 className='text-3xl font-bold underline'>
+        Convert To Bitcoin Project
+      </h1>
       <Converter />
     </div>
   );

@@ -9,10 +9,11 @@ const Converter = () => {
     GBP: null,
     USD: null,
     EUR: null,
-
+    currentTime: "",
     euroToBTC: 0,
     gbpToBTC: 0,
     usdToBTC: 0,
+
     setCurrencyType: "",
     currencyType: "",
     setSelectedCurrencyType: "",
@@ -26,12 +27,14 @@ const Converter = () => {
         const euroRateFloat = data.data.bpi.EUR.rate_float;
         const gbpRateFloat = data.data.bpi.GBP.rate_float;
         const usdRateFloat = data.data.bpi.USD.rate_float;
+        const currentTime = data.data.time.updated;
 
         dispatch({
           type: "currency_update",
           EUR: euroRateFloat,
           GBP: gbpRateFloat,
           USD: usdRateFloat,
+          TIME: currentTime,
         });
         return data;
       });
@@ -48,6 +51,7 @@ const Converter = () => {
           GBP: action.GBP,
           USD: action.USD,
           EUR: action.EUR,
+          TIME: action.TIME,
         };
 
       case "CONVERT_TO_BTC":
@@ -149,6 +153,9 @@ const Converter = () => {
 
   return (
     <div>
+      <div>
+        Time :{state.TIME} <br></br>
+      </div>
       <label htmlFor='Select Currency'>Select Currency To Convert From:</label>
       <input
         className='Convert From'
